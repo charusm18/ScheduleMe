@@ -23,4 +23,4 @@ Installation Guide:
 
 ##### Install google calendar API:
 - make sure you have the credentials.json file Charu sent
-- run $pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib in the virtual env  
+- run $pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib  

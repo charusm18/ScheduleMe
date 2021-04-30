@@ -1,6 +1,7 @@
 from __future__ import print_function
 import datetime
 import os.path
+from events import Task, BusyBlock, WorkBlock
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
@@ -10,7 +11,7 @@ from google.oauth2.credentials import Credentials
 SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']
 
 
-def main():
+def getCalendarInfo():
     """Shows basic usage of the Google Calendar API.
     Prints the start and name of the next 10 events on the user's calendar.
     """
@@ -50,13 +51,21 @@ def main():
                                         orderBy='startTime').execute()
     events = events_result.get('items', [])
 
-    #creates BusyBlock objects out of all the events for the week in startTime order
+    return events
+
+def populateBusyBlocks():
+    busyBlocksImported = []
+    events = getCalendarInfo()
+    
     if not events:
         print('No upcoming events found.')
     for event in events:
         start = event['start'].get('dateTime', event['start'].get('date'))
         end = event['end'].get('dateTime', event['end'].get('date'))
-        print(start, event['summary'], end)
+        name = event['summary']
+        busyBlocksImported.append(BusyBlock(name, start, end))
+    return busyBlocksImported
+
 
 if __name__ == '__main__':
-    main()
+    populateBusyBlocks()
