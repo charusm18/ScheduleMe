@@ -4,6 +4,9 @@ __pycache__/
 
 # C extensions
 *.so
+credentials.json
+token.json
+
 
 # Node
 node_modules
@@ -13,6 +16,7 @@ node_modules
 
 # Distribution / packaging
 .Python
+flaskr.egg-info/
 venv/
 env/
 bin/

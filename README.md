@@ -1,4 +1,3 @@
-# PearlHacks  
 Installation Guide:  
 ## **Flask Installation:**  
 ##### 1. Start Virtual Environment:  
@@ -21,3 +20,7 @@ Installation Guide:
 ##### 3. To Run:  
 - $ py app.py
 - open up http://127.0.0.1:5000
+
+##### Install google calendar API:
+- make sure you have the credentials.json file Charu sent
+- run $pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib in the virtual env  
