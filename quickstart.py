@@ -41,10 +41,9 @@ def getCalendarInfo():
     sunday_start = datetime.datetime.combine(sunday_date.date(), datetime.time(0,0,0))    
     sunday_formated =  sunday_start.isoformat() + 'Z' # 'Z' indicates UTC time
     
-    saturday_date =  datetime.datetime.utcnow() + datetime.timedelta(days= 5 - day_of_week )
+    saturday_date =  datetime.datetime.utcnow() + datetime.timedelta(days= 28 + (5 - day_of_week) )
     saturday_end = datetime.datetime.combine(saturday_date.date(), datetime.time(23,59,59))    
     saturday_formated =  saturday_end.isoformat() + 'Z' # 'Z' indicates UTC time
-
     #gets all the events from a week
     events_result = service.events().list(calendarId='primary', timeMin=sunday_formated,
                                         timeMax= saturday_formated, singleEvents=True,
